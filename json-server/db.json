@@ -1,0 +1,167 @@
+{
+  "fruits": [
+    {
+      "id": "1",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-5.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-5.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-2.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Apricots",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-4.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Banana",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-3.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-1.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-2.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-5.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-1.jpg"
+    }
+  ],
+  "product": [
+    {
+      "id": "1",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-5.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-5.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-2.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Apricots",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-4.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Banana",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-3.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-1.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-2.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 4.99,
+      "img": "img/fruite-item-5.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "e2af",
+      "name": "aabc",
+      "email": "riddhi@gmail.com",
+      "review": "adsasd"
+    },
+    {
+      "id": "8cda",
+      "name": "asass",
+      "email": "abc@gmai.com",
+      "review": "ssdd"
+    }
+  ],
+  "coupon": [
+    {
+      "id": "ecb3",
+      "coupon": "sasd",
+      "discount": "10",
+      "expiry": "2024-05-03"
+    },
+    {
+      "id": "4c51",
+      "coupon": "AFD23",
+      "discount": "15",
+      "expiry": "2024-05-03"
+    }
+  ],
+  "contact": [
+    {
+      "id": "6597",
+      "address": " 4th Floor, DR World Mall, Aai Mata Road, Parvat Patiya, D. R. World, Mall, Surat",
+      "email": "riddhi@gmail.com",
+      "phone": "1234567"
+    },
+    {
+      "id": "224f",
+      "address": "Surat - Dumas Rd, Magdalla, Surat, Gujarat 395007",
+      "email": "asd@gmail.com",
+      "phone": "1234567"
+    }
+  ]
+}
