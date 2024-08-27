@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
-import { baseURL, baseURL1 } from "../../../utils/baseURL";
+// import axios from "axios"
+// import { baseURL, baseURL1 } from "../../../utils/baseURL";
 import axiosInstance from "../../../utils/axiosinstance";
 import { setAlert } from "./alert";
 
