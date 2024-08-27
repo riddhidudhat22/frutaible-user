@@ -73,7 +73,7 @@ function Login() {
     console.log(initialVal);
 
 
-    if (auth.isAuthenticated) {
+    if (auth.isAuthantication) {
         return <Navigate to="/" />
     }
 
