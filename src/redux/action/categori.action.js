@@ -1,8 +1,10 @@
+import axiosInstance from "../../utils/axiosinstance";
 import { ADD_CATEGORI, DELETE_CATEGORI, GET_CATEGORI, UPDATE_CATEGORI } from "../ActionType"
 
 export const getcategori = () => async (dispatch) => {
 
-  const response = await fetch("http://localhost:8000/api/v1/categories/list-category");
+  // const response = await fetch("http://localhost:8000/api/v1/categories/list-category");
+  const response=await axiosInstance.get("categories/list-category")
   const data = await response.json();
   console.log(data);
 

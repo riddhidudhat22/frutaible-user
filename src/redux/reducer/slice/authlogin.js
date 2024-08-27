@@ -36,7 +36,12 @@ export const login = createAsyncThunk(
     async (data, {dispatch, rejectWithValue }) => {
         try {
             console.log(data);
-            const response = await axiosInstance.post("users/loginusers", data)
+
+            const response = await axiosInstance.post("users/loginusers", data,{
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
             console.log(response);
             if (response.status === 200) {
             
