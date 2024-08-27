@@ -17,11 +17,6 @@ function Login() {
 
     console.log(auth);
 
-    useEffect(() => {
-        if (localStorage.getItem("_id")) {
-            dispatch(authcheck());
-        }
-    }, [dispatch]);
     let authSchema = {}, initialVal = {};
 
     if (type === 'signup') {
