@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Inputbox } from '../../component/UI/inputbox/input.styled';
-import { login, register } from '../../../redux/reducer/slice/authlogin';
+import { authcheck, login, register } from '../../../redux/reducer/slice/authlogin';
 import { Navigate } from "react-router-dom";
 
 function Login() {
@@ -17,7 +17,11 @@ function Login() {
 
     console.log(auth);
 
-
+    useEffect(() => {
+        if (localStorage.getItem("_id")) {
+            dispatch(authcheck());
+        }
+    }, [dispatch]);
     let authSchema = {}, initialVal = {};
 
     if (type === 'signup') {
