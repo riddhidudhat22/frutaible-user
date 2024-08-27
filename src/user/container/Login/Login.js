@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Inputbox } from '../../component/UI/inputbox/input.styled';
-import { authcheck, login, register } from '../../../redux/reducer/slice/authlogin';
+import { login, register } from '../../../redux/reducer/slice/authlogin';
 import { Navigate } from "react-router-dom";
 
 function Login() {
@@ -16,6 +16,7 @@ function Login() {
     const auth = useSelector(state => state.auth) || {};
 
     console.log(auth);
+
 
     let authSchema = {}, initialVal = {};
 
