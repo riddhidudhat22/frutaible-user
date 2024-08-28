@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,26 +7,19 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { object, string } from 'yup';
 import { useFormik } from 'formik';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch, useSelector } from 'react-redux';
-import { editecategori, getcategori, handelAdd, handleAdd, handledelete } from '../../../redux/action/categori.action';
+import { editecategori, getcategori, handleAdd, handledelete } from '../../../redux/action/categori.action';
 
-function Category(props) {
-  const [open, setOpen] = React.useState(false);
-  const [data, setdata] = useState([]);
-  const [update, setupdate] = useState(null)
+function Category() {
+  const [open, setOpen] = useState(false);
+  const [update, setUpdate] = useState(null);
 
   const dispatch = useDispatch();
-
-  const categori = useSelector(state => state.categories)
-  console.log(categori)
-
-
+  const categori = useSelector(state => state.categories);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -35,121 +28,47 @@ function Category(props) {
   const handleClose = () => {
     setOpen(false);
     formik.resetForm();
-    setupdate(null)
+    setUpdate(null);
   };
 
-  // const handelAdd = async (data) => {
-  //   console.log(data);
-  // let localData = JSON.parse(localStorage.getItem('category'));
-  // let rNo = Math.floor(Math.random() * 1000);
-
-  // if (localData) {
-  //   localData.push({ ...data, id: rNo });
-  //   localStorage.setItem('category', JSON.stringify(localData));
-  // } else {
-  //   localStorage.setItem('category', JSON.stringify([{ ...data, id: rNo }]));
-  // }
-  // await fetch("http://localhost:8000/api/v1/categories/add-category", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   },
-  //   body: JSON.stringify(data)
-  // }
-  // )
-  // getdata();
-  // };
-
-  // const getdatacat = async () => {
-  //   // const localdata = JSON.parse(localStorage.getItem('category'));
-  //   // if (localdata) {
-  //   //   setdata(localdata);
-  //   // }
-  //   // const response = await fetch("http://localhost:8000/api/v1/categories/list-category");
-  //   // const data = await response.json();
-  //   // console.log(data);
-  //   // setdata(data.data)
-  //   dispatch(getcategori())
-  // };
-
   useEffect(() => {
-    // getdatacat();
-    dispatch(getcategori())
-  },
-   []);
+    dispatch(getcategori());
+  }, [dispatch]);
 
-  // const handleediteData = async (data) => {
-
-  //   // const localdata = JSON.parse(localStorage.getItem('category'));
-
-  //   // const index = localdata.findIndex((v) => v.id === data.id);
-
-  //   // localdata[index] = data;
-
-  //   // localStorage.setItem('category', JSON.stringify(localdata));
-
-  //   await fetch("http://localhost:8000/api/v1/categories/update-category/" + data._id, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(data)
-  //   })
-  //   getdata();
-
-  // }
-
-  let ContactSchema = object({
+  const ContactSchema = object({
     name: string().required(),
-    description: string().required()
+    description: string().required(),
   });
+
   const formik = useFormik({
     initialValues: {
       name: '',
-      description: ''
+      description: '',
     },
     validationSchema: ContactSchema,
     onSubmit: (values, { resetForm }) => {
-
       if (update) {
-        dispatch(editecategori(values))
+        dispatch(editecategori({ ...values, _id: update }));
       } else {
         dispatch(handleAdd(values));
       }
 
-      resetForm()
+      resetForm();
       handleClose();
-    }
+    },
   });
+
   const { handleSubmit, handleBlur, handleChange, touched, errors, values, setValues } = formik;
 
+  const handleDelete = (_id) => {
+    dispatch(handledelete(_id));
+  };
 
-  const handledeletee = async (_id) => {
-    // console.log(data);
-    // const localdata = JSON.parse(localStorage.getItem('category'));
-    // let fdata = localdata.filter((v) => v.id !== data.id)
-
-    // localStorage.setItem('category', JSON.stringify(fdata));
-
-    // try {
-    //   await fetch("http://localhost:8000/api/v1/categories/delete-category/" + data._id, {
-    //     method: "DELETE"
-    //   })
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
-    // getdata()
-    // dispatch(handledelete())
-    dispatch(handledelete(_id))
-  }
-
-  const handleedit = (data) => {
-    setValues(data)
+  const handleEdit = (data) => {
+    setValues(data); // Set form values to the selected row data
     setOpen(true);
-    setupdate(data._id)
-
-  }
+    setUpdate(data._id); // Set the current category ID being updated
+  };
 
   const columns = [
     { field: 'name', headerName: 'Name', width: 130 },
@@ -160,71 +79,63 @@ function Category(props) {
       width: 130,
       renderCell: (params) => (
         <>
-          <IconButton aria-label="delete" onClick={() => handleedit(params.row)}>
+          <IconButton aria-label="edit" onClick={() => handleEdit(params.row)}>
             <EditIcon />
           </IconButton>
-          <IconButton aria-label="delete" onClick={() => handledeletee(params.row._id)}>
+          <IconButton aria-label="delete" onClick={() => handleDelete(params.row._id)}>
             <DeleteIcon />
           </IconButton>
         </>
-
-      )
+      ),
     },
-
   ];
-
-
 
   return (
     <>
-
       <div style={{ textAlign: 'start', marginRight: '50px' }}>
-        <React.Fragment>
-          <Button variant="outlined" onClick={handleClickOpen}>
-            Add Category
-          </Button><br /><br />
-          <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Add The Product</DialogTitle>
-            <form onSubmit={handleSubmit}>
-              <DialogContent>
-                <TextField
-                  margin="dense"
-                  id="name"
-                  name="name"
-                  label="category"
-                  type="text"
-                  fullWidth
-                  variant="standard"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
-                  error={errors.name && touched.name ? true : false}
-                  helperText={errors.name && errors.name ? errors.name : ''}
-                />
+        <Button variant="outlined" onClick={handleClickOpen}>
+          Add Category
+        </Button><br /><br />
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>{update ? 'Edit Category' : 'Add Category'}</DialogTitle>
+          <form onSubmit={handleSubmit}>
+            <DialogContent>
+              <TextField
+                margin="dense"
+                id="name"
+                name="name"
+                label="Category Name"
+                type="text"
+                fullWidth
+                variant="standard"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+                error={errors.name && touched.name}
+                helperText={errors.name && errors.name}
+              />
 
-                <TextField
-                  margin="dense"
-                  id="description"
-                  name="description"
-                  label="description"
-                  type="text"
-                  fullWidth
-                  variant="standard"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.description}
-                  error={errors.description && touched.description ? true : false}
-                  helperText={errors.description && errors.description ? errors.description : ''}
-                />
-                <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button type="submit">{update ? 'update' : 'Add'}</Button>
-
-                </DialogActions>
-              </DialogContent>
-            </form>
-          </Dialog>
-        </React.Fragment>
+              <TextField
+                margin="dense"
+                id="description"
+                name="description"
+                label="Description"
+                type="text"
+                fullWidth
+                variant="standard"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.description}
+                error={errors.description && touched.description}
+                helperText={errors.description && errors.description}
+              />
+              <DialogActions>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button type="submit">{update ? 'Update' : 'Add'}</Button>
+              </DialogActions>
+            </DialogContent>
+          </form>
+        </Dialog>
       </div>
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid
@@ -232,10 +143,10 @@ function Category(props) {
           columns={columns}
           initialState={{
             pagination: {
-              paginationModel: { page: 0, pageSize: 5 }
-            }
+              paginationModel: { page: 0, pageSize: 5 },
+            },
           }}
-          getRowId={row => row._id}
+          getRowId={(row) => row._id}
           pageSizeOptions={[5, 10]}
           checkboxSelection
         />

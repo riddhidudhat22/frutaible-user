@@ -15,27 +15,33 @@ export const categoriReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 categori: action.payload.data
-            }
-            case ADD_CATEGORI:
-                return {
-                  ...state,
-                //   categori: state.categori.concat(action.payload)
-                categori:[...state.categori,action.payload.data]
-                }
+            };
+        case ADD_CATEGORI:
+            return {
+                ...state,
+                categori: [...state.categori, action.payload.data]
+            };
         case DELETE_CATEGORI:
             return {
-                isloading: false,
+                isLoading: false,
                 ...state,
                 categori: state.categori.filter((v) => v._id !== action.payload),
                 error: null
-            }
+            };
         case UPDATE_CATEGORI:
             return {
-                // ...state,
                 isLoading: false,
                 categori: state.categori.map((v) => v._id === action.payload.data._id ? action.payload.data : v),
-            }
+                categori: state.categori.map((v) => {
+                    if (v.id === action.payload.id) {
+                        return action.payload
+                    } else {
+                        return v;
+                    }
+                })
+            
+            };
         default:
             return state;
     }
-}
+};

@@ -36,7 +36,7 @@ function Header(props) {
   const product = useSelector(state => state.product);
   console.log("product++", product);
 
-  const { isAuthantication, user } = useSelector(state => state.auth) ;
+  const { isAuthantication, user } = useSelector(state => state.auth) || {} ;
   console.log(user)
 
   const handlelogout = () => {
@@ -140,7 +140,7 @@ function Header(props) {
         </div>
       </div>
       {/* Navbar End */}
-      {/* Modal Search Start */}user._id
+      {/* Modal Search Startuser._id */}
       <div className="modal fade" id="searchModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-fullscreen">
           <div className="modal-content rounded-0">

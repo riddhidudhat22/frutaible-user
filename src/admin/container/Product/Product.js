@@ -228,9 +228,12 @@ function Product(props) {
                     input={<OutlinedInput label="select category" />}
                     MenuProps={MenuProps}
                   >
-                    {categoridata.map((v) => (
+                    {/* {categoridata.map((v) => (
                       <MenuItem key={v._id} value={v._id}>{v.name}</MenuItem>
-                    ))}
+                    ))} */}
+                     {(categoridata || []).map((v) => (
+      <MenuItem key={v._id} value={v._id}>{v.name}</MenuItem>
+    ))}
                   </Select>
                   {errors.categori_id && touched.categori_id ? errors.categori_id : ''}
                 </FormControl>
@@ -246,9 +249,13 @@ function Product(props) {
                     input={<OutlinedInput label="select subcategory" />}
                     MenuProps={MenuProps}
                   >
-                    {selectsub.map((v) => (
+                    {/* {selectsub.map((v) => (
                       <MenuItem key={v._id} value={v._id}>{v.name}</MenuItem>
-                    ))}
+                    ))} */}
+
+{(selectsub || []).map((v) => (
+      <MenuItem key={v._id} value={v._id}>{v.name}</MenuItem>
+    ))}
                   </Select>
                   {errors.subcategori_id && touched.subcategori_id ? errors.subcategori_id : ''}
                 </FormControl>
